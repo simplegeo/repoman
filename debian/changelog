@@ -1,3 +1,9 @@
+repoman (1.5.1sg79) lucid; urgency=low
+
+  * UNRELEASED
+
+ -- SimpleGeo Nerds <nerds@simplegeo.com>  Tue, 10 Aug 2010 22:32:04 +0000
+
 repoman (1.5.1sg7) unstable; urgency=low
 
   * Fix issue where binary-only packages wouldn't upload because they had
