@@ -1,0 +1,6 @@
+# -*- mode: shell-script -*-
+# Defaults for python-repoman initscript
+# sourced by /etc/init.d/python-repoman
+# installed at /etc/default/python-repoman by the maintainer scripts
+
+RUN=no
