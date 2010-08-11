@@ -32,18 +32,19 @@ SCRIPTNAME=/etc/init.d/$NAME
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
-if [ "x$RUN" != "xyes" ] ; then
-    log_failure_msg "$NAME disabled, please adjust the configuration to your needs "
-    log_failure_msg "and then set RUN to 'yes' in /etc/default/$NAME to enable it."
-    exit 0
-fi
-
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
 
 # Define LSB log_* functions.
 # Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
 . /lib/lsb/init-functions
+
+if [ "x$RUN" != "xyes" ] ; then
+    log_failure_msg "$NAME disabled, please adjust the configuration to your needs "
+    log_failure_msg "and then set RUN to 'yes' in /etc/default/$NAME to enable it."
+    exit 0
+fi
+
 
 #
 # Function that starts the daemon/service
@@ -55,11 +56,12 @@ do_start()
 	#   1 if daemon was already running
 	#   2 if daemon could not be started
 	start-stop-daemon --start --quiet --chuid repoman --group repoman \
-                          --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
+                      --make-pidfile --pidfile $PIDFILE --background \
+                      --exec $DAEMON --test > /dev/null \
 		|| return 1
 	start-stop-daemon --start --quiet --chuid repoman --group repoman \
-                          --pidfile $PIDFILE --exec $DAEMON -- \
-		$DAEMON_ARGS \
+                      --make-pidfile --pidfile $PIDFILE --background \
+                      --exec $DAEMON -- $DAEMON_ARGS \
 		|| return 2
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend
@@ -76,7 +78,7 @@ do_stop()
 	#   1 if daemon was already stopped
 	#   2 if daemon could not be stopped
 	#   other if a failure occurred
-	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name $NAME
+	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name repomand
 	RETVAL="$?"
 	[ "$RETVAL" = 2 ] && return 2
 	# Wait for children to finish too if this is a daemon that forks
@@ -101,7 +103,7 @@ do_reload() {
 	# restarting (for example, when it is sent a SIGHUP),
 	# then implement that here.
 	#
-	start-stop-daemon --stop --signal 1 --quiet --pidfile $PIDFILE --name $NAME
+	start-stop-daemon --stop --signal 1 --quiet --pidfile $PIDFILE --name repomand
 	return 0
 }
 
