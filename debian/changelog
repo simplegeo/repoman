@@ -1,3 +1,16 @@
+repoman (1.5.1sg82) lucid; urgency=low
+
+  [ Ian Eure ]
+  * Install binaries.
+  * Nuke install file.
+  * Don't bother with Build-Depends-Indep. Remove python-dev dependency.
+    Build-Depend on python-setuptools, distutils donesn't support
+    entry_points.
+
+  [ SimpleGeo Nerds ]
+
+ -- SimpleGeo Nerds <nerds@simplegeo.com>  Wed, 11 Aug 2010 00:13:47 +0000
+
 repoman (1.5.1sg80) lucid; urgency=low
 
   [ Ian Eure ]
