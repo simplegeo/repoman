@@ -1,3 +1,12 @@
+repoman (1.5.1sg87) lucid; urgency=low
+
+  [ Ian Eure ]
+  * Fix issue with unicode in repoman server responses.
+
+  [ SimpleGeo Nerds ]
+
+ -- SimpleGeo Nerds <nerds@simplegeo.com>  Wed, 13 Oct 2010 01:13:17 +0000
+
 repoman (1.5.1sg86) lucid; urgency=low
 
   [ Ian Eure ]
