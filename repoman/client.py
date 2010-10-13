@@ -378,7 +378,7 @@ def main():
         output = globals()[func](*args[1:])
 
         if output:
-            print output
+            print unicode(output).encode('utf-8')
     except (TypeError, ArgumentError), ex:
         print "Error: %s\n" % ex
         print cmd_help(args[0])
