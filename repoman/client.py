@@ -11,6 +11,7 @@ import sys
 import time
 import logging
 import os.path
+import os
 import tarfile
 from textwrap import fill, dedent
 from optparse import OptionParser
@@ -217,6 +218,12 @@ def cmd_promote(dist, package, *dest_dists):
     for dest in dest_dists:
         request("%s/%s/copy?dstdist=%s" % (dist, package, dest),
                 method="POST")
+	if dest == 'simplegeo-production':
+		user = os.environ.get('LOGNAME', '')
+		response, content = Http().request(
+			'http://todos.simplegeo.com/board/add_push/c78fad9e57fcb74c7b6e1466752c4d43',
+			'POST',
+			urlencode({'user': user, 'package': package})
     return ""
 
 
@@ -378,7 +385,7 @@ def main():
         output = globals()[func](*args[1:])
 
         if output:
-            print unicode(output).encode('utf-8')
+            print output
     except (TypeError, ArgumentError), ex:
         print "Error: %s\n" % ex
         print cmd_help(args[0])
