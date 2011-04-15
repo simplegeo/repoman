@@ -1,3 +1,12 @@
+repoman (1.5.1sg88) lucid; urgency=low
+
+  [ dsmith ]
+  * Throw a 404 when the package cannot be found
+
+  [ SimpleGeo Nerds ]
+
+ -- SimpleGeo Nerds <nerds@simplegeo.com>  Fri, 15 Apr 2011 20:49:11 +0000
+
 repoman (1.5.1sg87) lucid; urgency=low
 
   [ Ian Eure ]
