@@ -178,7 +178,7 @@ class DistHandler(RequestHandler):
                 filename = os.path.join(dirpath, filename)
                 os.remove(filename)
         os.rmdir(basedir)
-        
+
         if not response:
             response = Response(status=500)
         return response
@@ -214,6 +214,10 @@ class PackageHandler(RequestHandler):
         if action == 'copy':
             if not 'dstdist' in self.request.params:
                 return Response(status=400, body='A required parameter, dstdist is missing')
+
+            if not repo.get_package(dist, package):
+                return Response(statuss=404, body='Package %s not found')
+
             repo.copy_package(dist, self.request.params['dstdist'], package)
             return Response(status=200)
 
