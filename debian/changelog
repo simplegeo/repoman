@@ -1,3 +1,12 @@
+repoman (1.5.1sg89) maverick; urgency=low
+
+  [ Ian Eure ]
+  * Work with newer versions of python-daemon.
+
+  [ SimpleGeo Nerds ]
+
+ -- SimpleGeo Nerds <nerds@simplegeo.com>  Tue, 20 Sep 2011 20:13:35 +0000
+
 repoman (1.5.1sg88) lucid; urgency=low
 
   [ dsmith ]
